@@ -34,7 +34,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public Optional<List<CustomEntity>> findAllOrdersWithCustomerNameAndTotal() throws Exception {
+    public List<CustomEntity> findAllOrdersWithCustomerNameAndTotal() throws Exception {
         Query query = em.createQuery("select e.orderDetailPK.orderId,o.date,o.customer.id,o.customer.name,e.qty*e.unitPrice from OrderDetail e INNER JOIN e.item a INNER JOIN e.order o");
 
         List<Object[]> list = query.getResultList();
@@ -44,7 +44,7 @@ public class QueryDAOImpl implements QueryDAO {
             customEntityArrayList.add(new CustomEntity((String)arr[0],(Date)arr[1],(String)arr[2],(String)arr[3],(double)arr[4]));
             System.out.println( Arrays.toString(arr)+"  ad@mia  "+arr[1]);
         }
-        return Optional.ofNullable(customEntityArrayList);
+        return customEntityArrayList;
     }
 
 

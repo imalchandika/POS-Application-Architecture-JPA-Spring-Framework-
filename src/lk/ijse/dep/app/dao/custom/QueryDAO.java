@@ -10,6 +10,6 @@ public interface QueryDAO extends SuperDAO {
 
     List<CustomEntity> findOrderDetailsWithItemDescriptions(String orderId) throws Exception;
 
-    Optional<List<CustomEntity>> findAllOrdersWithCustomerNameAndTotal() throws Exception;
+    List<CustomEntity> findAllOrdersWithCustomerNameAndTotal() throws Exception;
 
 }
